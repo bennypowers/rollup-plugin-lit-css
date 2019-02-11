@@ -31,6 +31,7 @@
     "uglifycss": "0.0.29"
   },
   "devDependencies": {
+    "@types/uglifycss": "0.0.5",
     "esm": "^3.2.0",
     "lit-element": "^2.0.0-rc.5",
     "rollup": "^1.1.2",
