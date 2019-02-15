@@ -1,8 +1,8 @@
 import { UglifyCSSOptions } from 'uglifycss'
 interface LitCSSOptions {
-  include: string[];
-  exclude: string[];
-  uglify: boolean | UglifyCSSOptions;
+  include?: string[];
+  exclude?: string[];
+  uglify?: boolean | UglifyCSSOptions;
 }
 
 export function css(options: LitCSSOptions): {
