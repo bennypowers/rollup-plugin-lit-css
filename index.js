@@ -8,7 +8,7 @@ const importDeclaration = 'import { css } from \'lit-element\';';
  * @param  {Object} [options={}]
  * @return {Object}
  */
-module.exports = function css({ include = ['**/*.css'], exclude, uglify = false } = {}) {
+module.exports = function css({ include = /\.css$/i, exclude, uglify = false } = {}) {
   const filter = createFilter(include, exclude);
   return {
     name: 'lit-css',

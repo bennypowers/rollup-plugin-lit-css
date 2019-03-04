@@ -1,7 +1,7 @@
 import { UglifyCSSOptions } from 'uglifycss'
 interface LitCSSOptions {
-  include?: string[];
-  exclude?: string[];
+  include?: RegExp | string[];
+  exclude?: RegExp | string[];
   uglify?: boolean | UglifyCSSOptions;
 }
 
