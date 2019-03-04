@@ -6,6 +6,7 @@
   "scripts": {
     "test": "tape -r esm test/test.js"
   },
+  "registry": "https://registry.npmjs.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bennypowers/rollup-plugin-lit-css.git"
@@ -32,9 +33,16 @@
   },
   "devDependencies": {
     "@types/uglifycss": "0.0.5",
+    "cz-conventional-changelog": "^2.1.0",
     "esm": "^3.2.0",
     "lit-element": "^2.0.0-rc.5",
     "rollup": "^1.1.2",
+    "rollup-plugin-alias": "^1.5.1",
     "tape": "^4.9.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
