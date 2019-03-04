@@ -6,7 +6,10 @@
   "scripts": {
     "test": "tape -r esm test/test.js"
   },
-  "registry": "https://registry.npmjs.com",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bennypowers/rollup-plugin-lit-css.git"
@@ -38,6 +41,7 @@
     "lit-element": "^2.0.0-rc.5",
     "rollup": "^1.1.2",
     "rollup-plugin-alias": "^1.5.1",
+    "semantic-release": "^15.13.3",
     "tape": "^4.9.2"
   },
   "config": {
