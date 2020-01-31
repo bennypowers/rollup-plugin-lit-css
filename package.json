@@ -31,17 +31,17 @@
   },
   "homepage": "https://github.com/bennypowers/rollup-plugin-lit-css#readme",
   "dependencies": {
-    "rollup-pluginutils": "^2.3.3",
+    "rollup-pluginutils": "^2.8.2",
     "uglifycss": "0.0.29"
   },
   "devDependencies": {
     "@types/uglifycss": "0.0.5",
-    "cz-conventional-changelog": "^2.1.0",
+    "cz-conventional-changelog": "^3.1.0",
     "esm": "^3.2.0",
-    "lit-element": "^2.0.0-rc.5",
+    "lit-element": "^2.0.0",
     "rollup": "^1.1.2",
-    "rollup-plugin-alias": "^1.5.1",
-    "semantic-release": "^15.13.3",
+    "rollup-plugin-alias": "^2.2.0",
+    "semantic-release": "^17.0.1",
     "tape": "^4.9.2"
   },
   "config": {

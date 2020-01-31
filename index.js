@@ -1,5 +1,6 @@
 const { createFilter } = require('rollup-pluginutils');
 const { processString } = require('uglifycss');
+const { resolve } = require('path');
 
 const importDeclaration = 'import { css } from \'lit-element\';';
 
@@ -12,6 +13,10 @@ module.exports = function css({ include = /\.css$/i, exclude, uglify = false } =
   const filter = createFilter(include, exclude);
   return {
     name: 'lit-css',
+
+    load(id) {
+      if (filter(id)) this.addWatchFile(resolve(id))
+    },
 
     transform(css, id) {
       if (id.slice(-4) !== '.css') return null;
