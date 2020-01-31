@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-lit-css",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Rollup plugin to import css files as lit-element tagged css objects.",
   "main": "index.js",
   "scripts": {
