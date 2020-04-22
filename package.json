@@ -4,7 +4,9 @@
   "description": "Rollup plugin to import css files as lit-element tagged css objects.",
   "main": "index.js",
   "scripts": {
-    "test": "tape -r esm test/test.js"
+    "build": "tsc",
+    "watch": "nodemon -x 'npm test'",
+    "test": "tape -r esm test/test.js | tap-summary"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -17,12 +19,16 @@
   "keywords": [
     "lit-element",
     "web-components",
+    "css",
     "rollup"
   ],
   "eslint": {
     "env": {
       "node": true
     }
+  },
+  "esm": {
+    "mode": "auto"
   },
   "author": "Benny Powers <web@bennypowers.com>",
   "license": "MIT",
@@ -35,14 +41,18 @@
     "uglifycss": "0.0.29"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.0",
     "@types/uglifycss": "0.0.5",
     "cz-conventional-changelog": "^3.1.0",
     "esm": "^3.2.0",
     "lit-element": "^2.0.0",
+    "nodemon": "^2.0.3",
     "rollup": "^1.1.2",
     "rollup-plugin-alias": "^2.2.0",
     "semantic-release": "^17.0.1",
-    "tape": "^4.9.2"
+    "tap-summary": "^4.0.0",
+    "tape": "^4.9.2",
+    "typescript": "^3.8.3"
   },
   "config": {
     "commitizen": {

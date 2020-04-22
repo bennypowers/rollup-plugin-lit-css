@@ -1,7 +1,7 @@
 import test from 'tape';
 import { rollup } from 'rollup';
-import litcss from '../';
-import alias from 'rollup-plugin-alias'
+import litcss from '../index';
+import alias from '@rollup/plugin-alias'
 
 const basicCssText = `html {
   display: block;
@@ -43,7 +43,7 @@ test('imports from a bare specifier', async function(assert) {
     input: './test/bare.js',
     plugins: [
       // mock bare specifier
-      alias({resolve: ['.js', '.css'], 'styles/basic.css': './basic.css'}),
+      alias({ entries: { 'styles/basic.css': './basic.css' } }),
       litcss()
     ]
   });
