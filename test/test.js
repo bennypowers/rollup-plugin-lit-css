@@ -52,3 +52,23 @@ test('imports from a bare specifier', async function(assert) {
 
   assert.end();
 })
+
+test('escape special chars', async function(assert) {
+  const bundle = await rollup({
+    input: './test/escape.js',
+    plugins: [litcss()]
+  });
+  const { output: [{ code }] } = await bundle.generate({ format: 'es' });
+  assert.equal(code, `import { css } from 'lit-element';
+
+var specialChars = css\`/** \\\`😀\\\` */
+html {
+  display: block;
+}
+\`;
+
+export { specialChars as style };
+`);
+
+  assert.end();
+})

@@ -2,6 +2,7 @@ import { createFilter } from 'rollup-pluginutils';
 import { processString, UglifyCSSOptions } from 'uglifycss';
 import { resolve } from 'path';
 import type { Plugin } from 'rollup';
+import stringToTemplateLiteral from 'string-to-template-literal';
 
 export interface LitCSSOptions {
   include?: RegExp | string[];
@@ -10,7 +11,7 @@ export interface LitCSSOptions {
 }
 
 function transform(css: string): string {
-  return `import { css } from 'lit-element';export default css\`${css}\``;
+  return `import { css } from 'lit-element';export default css${stringToTemplateLiteral(css)}`;
 }
 
 /**

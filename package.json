@@ -45,6 +45,7 @@
   "homepage": "https://github.com/bennypowers/rollup-plugin-lit-css#readme",
   "dependencies": {
     "rollup-pluginutils": "^2.8.2",
+    "string-to-template-literal": "^0.2.1",
     "uglifycss": "0.0.29"
   },
   "devDependencies": {
