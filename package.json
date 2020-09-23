@@ -2,16 +2,18 @@
   "name": "rollup-plugin-lit-css",
   "version": "2.0.4",
   "description": "Rollup plugin to import css files as lit-element tagged css objects.",
-  "main": "index.js",
+  "main": "index.cjs.js",
+  "module": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && rollup --input index.js --file index.cjs.js --format cjs",
     "watch": "nodemon -x 'npm test'",
     "test": "tape -r esm test/test.js | tap-summary"
   },
   "files": [
     "src",
     "test",
+    "index.cjs.js",
     "index.js",
     "index.d.ts"
   ],
@@ -45,7 +47,7 @@
   "homepage": "https://github.com/bennypowers/rollup-plugin-lit-css#readme",
   "dependencies": {
     "rollup-pluginutils": "^2.8.2",
-    "string-to-template-literal": "^0.2.1",
+    "string-to-template-literal": "^0.2.2",
     "uglifycss": "0.0.29"
   },
   "devDependencies": {
@@ -55,7 +57,7 @@
     "esm": "^3.2.0",
     "lit-element": "^2.0.0",
     "nodemon": "^2.0.3",
-    "rollup": "^1.1.2",
+    "rollup": "^1.32.1",
     "rollup-plugin-alias": "^2.2.0",
     "semantic-release": "^17.0.1",
     "tap-summary": "^4.0.0",
