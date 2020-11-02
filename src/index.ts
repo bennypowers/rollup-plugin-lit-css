@@ -8,16 +8,26 @@ export interface LitCSSOptions {
   include?: RegExp | string[];
   exclude?: RegExp | string[];
   uglify?: boolean | UglifyCSSOptions;
+  import?: string;
+  tag?: string;
 }
 
-function transform(css: string): string {
-  return `import { css } from 'lit-element';export default css${stringToTemplateLiteral(css)}`;
+function transform(css: string, specifier: string, tag: string): string {
+  return `import {${tag}} from '${specifier}';export default ${tag}${stringToTemplateLiteral(css)}`;
 }
 
 /**
  * Imports css as lit-element `css`-tagged constructible style sheets.
  */
-export default function css({ include = /\.css$/i, exclude, uglify = false }: LitCSSOptions = {}): Plugin {
+export default function css(options: LitCSSOptions = {}): Plugin {
+  const {
+    exclude,
+    include = /\.css$/i,
+    uglify = false,
+    import: specifier = 'lit-element',
+    tag = 'css',
+  } = options;
+
   const filter = createFilter(include, exclude);
   return {
     name: 'lit-css',
@@ -32,7 +42,7 @@ export default function css({ include = /\.css$/i, exclude, uglify = false }: Li
       if (!filter(id)) return null;
       const uglifyOptions = typeof uglify === 'object' ? uglify : undefined
       const cssContent = !uglify ? css : processString(css, uglifyOptions);
-      const code = transform(cssContent);
+      const code = transform(cssContent, specifier, tag);
       return { code, map: { mappings: '' } };
     },
   };
