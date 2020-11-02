@@ -72,3 +72,45 @@ export { specialChars as style };
 
   assert.end();
 })
+
+
+test('imports css from fast', async function (assert) {
+  const bundle = await rollup({
+    input: './test/escape.js',
+    plugins: [litcss({ import: '@microsoft/fast-element'})]
+  });
+  const { output: [{ code }] } = await bundle.generate({ format: 'es' });
+  assert.equal(code, `import { css } from '@microsoft/fast-element';
+
+var specialChars = css\`/** \\\`😀\\\` */
+html {
+  display: block;
+}
+\`;
+
+export { specialChars as style };
+`);
+
+  assert.end();
+})
+
+
+test('imports boop from snoot', async function (assert) {
+  const bundle = await rollup({
+    input: './test/escape.js',
+    plugins: [litcss({ import: 'snoot', tag: 'boop' })]
+  });
+  const { output: [{ code }] } = await bundle.generate({ format: 'es' });
+  assert.equal(code, `import { boop } from 'snoot';
+
+var specialChars = boop\`/** \\\`😀\\\` */
+html {
+  display: block;
+}
+\`;
+
+export { specialChars as style };
+`);
+
+  assert.end();
+})
